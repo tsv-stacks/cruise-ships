@@ -1,4 +1,6 @@
-# Concepts
+# Cruise Ship Project
+
+## Concepts
 
 Domain Modelling
 Object-oriented Programming
