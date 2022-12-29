@@ -16,7 +16,13 @@ class Port {
   }
 }
 
-const titanic = new Ship();
-console.log(titanic);
+class Itinerary {
+  constructor(ports) {
+    this.ports = ports;
+  }
+}
 
-module.exports = { Ship, Port };
+// const titanic = new Ship();
+// console.log(titanic);
+
+module.exports = { Ship, Port, Itinerary };
