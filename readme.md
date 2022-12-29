@@ -1,10 +1,10 @@
 # Cruise Ship Project
 
-## Concepts
+## Concepts Covered
 
-Domain Modelling
-Object-oriented Programming
-Single Responsibility Principle
-Dependency inversion
-Mocks
-Spies
+- Domain Modelling
+- Object-oriented Programming
+- Single Responsibility Principle
+- Dependency inversion
+- Mocks
+- Spies
