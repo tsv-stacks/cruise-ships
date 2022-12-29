@@ -6,12 +6,19 @@ class Ship {
     this.remainingPort = [...itinerary.ports];
   }
   setSail() {
-    this.previousPort = this.currentPort;
-    this.currentPort = null;
-    this.remainingPort.shift();
+    if (this.remainingPort.length < 2) {
+      throw new Error("End of Itinerary reached");
+    } else {
+      this.previousPort = this.currentPort;
+      this.currentPort = null;
+      this.remainingPort.shift();
+    }
   }
   dock(port) {
-    this.currentPort = port;
+    // const itinerary = this.itinerary;
+    // const ppIndex = itinerary.ports.indexOf(this.previousPort);
+    // this.currentPort = itinerary.ports[ppIndex + 1];
+    this.currentPort = this.remainingPort[0];
   }
 }
 
