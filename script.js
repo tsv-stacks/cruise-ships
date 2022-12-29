@@ -1,13 +1,19 @@
 class Ship {
-  constructor(startingPort) {
-    this.startingPort = startingPort;
+  constructor(currentPort) {
+    this.currentPort = currentPort;
   }
   setSail() {
-    this.startingPort = "";
+    this.currentPort = "";
+  }
+}
+
+class Port {
+  constructor(name) {
+    this.name = name;
   }
 }
 
 const titanic = new Ship();
 console.log(titanic);
 
-module.exports = { Ship };
+module.exports = { Ship, Port };
