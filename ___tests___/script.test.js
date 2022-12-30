@@ -1,4 +1,4 @@
-const { Ship, Itinerary } = require("../script");
+const { Ship } = require("../script");
 
 describe("Ship", () => {
   const port = {
@@ -7,7 +7,9 @@ describe("Ship", () => {
     name: "Dover",
     dockedShips: [],
   };
-  const itinerary = new Itinerary([port]);
+  const itinerary = {
+    ports: [port],
+  };
   const ship = new Ship(itinerary);
 
   it("can be instantiated", () => {
@@ -21,6 +23,35 @@ describe("Ship", () => {
   it("gets added to port on instantiation", () => {
     expect(port.addShip).toHaveBeenCalledWith(ship);
     expect(port.addShip).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("Ship remaining itinerary location", () => {
+  dover = {
+    addShip: jest.fn(),
+    removeShip: jest.fn(),
+    name: "Dover",
+    dockedShips: [],
+  };
+  calais = {
+    addShip: jest.fn(),
+    removeShip: jest.fn(),
+    name: "Calais",
+    ships: [],
+  };
+  itinerary = {
+    ports: [dover, calais],
+  };
+  const ship = new Ship(itinerary);
+
+  it("remaining port is same as itineray at start", () => {
+    expect(ship.remainingPort).toEqual(ship.itinerary.ports);
+  });
+
+  it("itinery stays constant and not affected by remaining port function", () => {
+    ship.setSail();
+    expect(ship.itinerary.ports.length).toBe(2);
+    expect(ship.remainingPort.length).toBe(1);
   });
 });
 
@@ -43,7 +74,9 @@ describe("Ship setting sail", () => {
       name: "Calais",
       ships: [],
     };
-    itinerary = new Itinerary([dover, calais]);
+    itinerary = {
+      ports: [dover, calais],
+    };
     ship = new Ship(itinerary);
   });
 
