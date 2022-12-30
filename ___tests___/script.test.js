@@ -19,36 +19,31 @@ describe("Ship", () => {
 });
 
 describe("Ship setting sail", () => {
-  beforeAll(() => {
-    const dover = new Port("Dover");
-    const calais = new Port("Calais");
-    const itinerary = new Itinerary([dover, calais]);
-    const ship = new Ship(itinerary);
+  let ship;
+  let itinerary;
+  let calais;
+  let dover;
+
+  beforeEach(() => {
+    dover = new Port("Dover");
+    calais = new Port("Calais");
+    itinerary = new Itinerary([dover, calais]);
+    ship = new Ship(itinerary);
   });
 
-  test("can set sail", () => {
+  it("can set sail", () => {
     ship.setSail();
     expect(ship.currentPort).toBeFalsy;
     expect(ship.previousPort).toBe(itinerary.ports[0]);
     expect(dover.dockedShips).not.toContain(ship);
   });
-
-  test("cannot set sail if further than its itinerary", () => {
-    // const dover = new Port("Dover");
-    // const calais = new Port("Calais");
-    // const itinerary = new Itinerary([dover, calais]);
-    // const ship = new Ship(itinerary);
-
+  it("cannot set sail if further than its itinerary", () => {
     ship.setSail();
     ship.dock();
 
     expect(() => ship.setSail()).toThrowError("End of Itinerary reached");
   });
-  test("it can dock at different port", () => {
-    // const dover = new Port("Dover");
-    // const calais = new Port("Calais");
-    // const itinerary = new Itinerary([dover, calais]);
-    // const ship = new Ship(itinerary);
+  it("it can dock at different port", () => {
     ship.setSail();
     ship.dock();
     expect(ship.currentPort).toBe(calais);
