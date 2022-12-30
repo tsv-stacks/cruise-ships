@@ -17,9 +17,6 @@ class Ship {
     }
   }
   dock(port) {
-    // const itinerary = this.itinerary;
-    // const ppIndex = itinerary.ports.indexOf(this.previousPort);
-    // this.currentPort = itinerary.ports[ppIndex + 1];
     this.currentPort = this.remainingPort[0];
     this.currentPort.addShip(this);
   }
@@ -43,8 +40,5 @@ class Itinerary {
     this.ports = ports;
   }
 }
-
-// const titanic = new Ship();
-// console.log(titanic);
 
 module.exports = { Ship, Port, Itinerary };
