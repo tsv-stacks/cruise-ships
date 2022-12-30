@@ -41,4 +41,10 @@ class Itinerary {
   }
 }
 
-module.exports = { Ship, Port, Itinerary };
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { Ship, Port, Itinerary };
+} else {
+  window.Port = Port;
+  window.Ship = Ship;
+  window.Itinerary = Itinerary;
+}
