@@ -2,8 +2,8 @@ const { Port } = require("../script");
 
 describe("Port", () => {
   const port = new Port("Dover");
-  const titanic = {};
-  const queenMary = {};
+  const titanic = jest.fn();
+  const queenMary = jest.fn();
 
   it("can be instantiated", () => {
     expect(new Port()).toBeInstanceOf(Object);
