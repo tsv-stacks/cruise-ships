@@ -8,3 +8,5 @@
 - Dependency inversion
 - Mocks
 - Spies
+
+## Add jsdom installation and jest installation instructions
