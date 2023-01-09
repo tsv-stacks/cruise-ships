@@ -10,7 +10,7 @@ let image1 = "url('../images/water1.png')";
 
 const bgSea = () => {
   if (count > 1000) {
-    console.log("has ran for over 1000 counts");
+    console.log("has ran for over 1000 counts (30 minutes!)");
     return;
   } else {
     console.log("bg image changing");
