@@ -27,19 +27,19 @@ describe("Ship", () => {
 });
 
 describe("Ship remaining itinerary location", () => {
-  dover = {
+  let dover = {
     addShip: jest.fn(),
     removeShip: jest.fn(),
     name: "Dover",
     dockedShips: [],
   };
-  calais = {
+  let calais = {
     addShip: jest.fn(),
     removeShip: jest.fn(),
     name: "Calais",
     ships: [],
   };
-  itinerary = {
+  let itinerary = {
     ports: [dover, calais],
   };
   const ship = new Ship(itinerary);

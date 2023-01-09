@@ -10,7 +10,19 @@
   </head>
   <body>
     <div id="viewport"></div>
-    <script src="./script.js" type="module"></script>
+    <!-- <script src="./script.js"></script> -->
+    <script defer src="./script.js" type="module"></script>
+    <!-- <script src="./main.js" type="module"></script> -->
+    <script>
+      import { Ship, Port, Itinerary } from "./script.js";
+      const itinerary = new Itinerary([
+        new Port("New York City"),
+        new Port("Grand Turk"),
+        new Port("San Juan"),
+        new Port("Amber Cove"),
+      ]);
+    </script>
+
     <script src="./src/controller.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-class Ship {
+export class Ship {
   constructor(itinerary) {
     this.itinerary = itinerary;
     this.currentPort = itinerary.ports[0];
@@ -22,7 +22,7 @@ class Ship {
   }
 }
 
-class Port {
+export class Port {
   constructor(name) {
     this.name = name;
     this.dockedShips = [];
@@ -35,16 +35,18 @@ class Port {
   }
 }
 
-class Itinerary {
+export class Itinerary {
   constructor(ports) {
     this.ports = ports;
   }
 }
 
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { Ship, Port, Itinerary };
-} else {
-  window.Port = Port;
-  window.Ship = Ship;
-  window.Itinerary = Itinerary;
-}
+// if (typeof module !== "undefined" && module.exports) {
+//   module.exports = { Ship, Port, Itinerary };
+// } else {
+//   window.Port = Port;
+//   window.Ship = Ship;
+//   window.Itinerary = Itinerary;
+// }
+
+// module.exports = { Ship, Port, Itinerary };
