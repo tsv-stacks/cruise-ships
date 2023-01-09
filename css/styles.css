@@ -1,3 +1,8 @@
+:root {
+  --vivid-sky-blue: #34cbf7ff;
+  --cerulean-crayola: #08aad9ff;
+}
+
 html,
 body {
   margin: 0;
@@ -42,4 +47,24 @@ body {
   height: 64px;
   background-image: url("../images/ship.png");
   position: absolute;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cerulean-crayola);
+  border-radius: 5px;
+  border: 1px solid var(--vivid-sky-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vivid-sky-blue);
+  border-radius: 5px;
+  border: 1px solid #a2d2ffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a2d2ffff;
 }

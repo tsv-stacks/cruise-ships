@@ -1,7 +1,7 @@
-let bgSeaImage = document.getElementById("viewport");
+const bgSeaImage = document.getElementById("viewport");
 let count = 0;
-let image0 = "url('../images/water0.png')";
-let image1 = "url('../images/water1.png')";
+const image0 = "url('../images/water0.png')";
+const image1 = "url('../images/water1.png')";
 
 class Controller {
   constructor() {
