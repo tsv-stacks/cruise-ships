@@ -39,6 +39,9 @@ class Controller {
       portsDiv.appendChild(div);
     });
   };
+  renderShip = function (ship) {
+    return ship.currentPort;
+  };
 }
 
 if (typeof module !== "undefined" && module.exports) {
