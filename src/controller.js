@@ -40,7 +40,17 @@ class Controller {
     });
   };
   renderShip = function (ship) {
-    return ship.currentPort;
+    let shipIndex = 0;
+    for (let i = 0; i < ship.itinerary.ports.length; i++) {
+      if (ship.currentPort === ship.itinerary.ports[i]) {
+        shipIndex = i;
+      }
+    }
+    let portElement = document.querySelector(
+      `[data-port-index="${shipIndex}"]`
+    );
+
+    return portElement;
   };
 }
 
