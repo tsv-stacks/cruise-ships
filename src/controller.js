@@ -4,7 +4,8 @@ const image0 = "url('../images/water0.png')";
 const image1 = "url('../images/water1.png')";
 
 class Controller {
-  constructor() {
+  constructor(ship) {
+    this.ship = ship;
     this.bgSea();
   }
   bgSea = function () {
@@ -40,6 +41,8 @@ class Controller {
     });
   };
   renderShip = function (ship) {
+    const shipElement = document.getElementById("ship");
+    shipElement.style.height = "64px";
     let shipIndex = 0;
     for (let i = 0; i < ship.itinerary.ports.length; i++) {
       if (ship.currentPort === ship.itinerary.ports[i]) {
@@ -49,8 +52,8 @@ class Controller {
     let portElement = document.querySelector(
       `[data-port-index="${shipIndex}"]`
     );
-
-    return portElement;
+    shipElement.style.top = `${portElement.offsetTop + 32}px`;
+    shipElement.style.left = `${portElement.offsetLeft - 32}px`;
   };
 }
 
