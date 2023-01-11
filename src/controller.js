@@ -15,7 +15,7 @@ class Controller {
     };
     document
       .getElementById("sailbutton")
-      .addEventListener("click", this.setSail);
+      .addEventListener("click", () => this.setSail());
   }
   bgSea = function () {
     if (count > 1000) {
