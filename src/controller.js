@@ -8,6 +8,8 @@ class Controller {
     this.ship = ship;
     this.bgSea();
     this.setSail = function () {
+      ship.setSail();
+      ship.dock();
       console.log("event listener");
       console.log(ship.nextPort);
     };

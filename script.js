@@ -16,7 +16,7 @@ class Ship {
       this.remainingPort.shift();
     }
   }
-  dock(port) {
+  dock() {
     this.currentPort = this.remainingPort[0];
     this.currentPort.addShip(this);
   }
