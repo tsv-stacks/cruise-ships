@@ -20,6 +20,11 @@ class Ship {
     this.currentPort = this.remainingPort[0];
     this.currentPort.addShip(this);
   }
+  get nextPort() {
+    let itin = this.itinerary.ports;
+    let nextPortIndex = itin.indexOf(this.currentPort);
+    return itin[nextPortIndex + 1];
+  }
 }
 
 class Port {

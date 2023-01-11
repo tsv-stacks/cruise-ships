@@ -7,6 +7,13 @@ class Controller {
   constructor(ship) {
     this.ship = ship;
     this.bgSea();
+    this.setSail = function () {
+      console.log("event listener");
+      console.log(ship.nextPort);
+    };
+    document
+      .getElementById("sailbutton")
+      .addEventListener("click", this.setSail);
   }
   bgSea = function () {
     if (count > 1000) {
@@ -40,7 +47,8 @@ class Controller {
       portsDiv.appendChild(div);
     });
   };
-  renderShip = function (ship) {
+  renderShip = function () {
+    const ship = this.ship;
     const shipElement = document.getElementById("ship");
     shipElement.style.height = "64px";
     let shipIndex = 0;
