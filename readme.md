@@ -16,3 +16,4 @@
 - [] Add guide
 - [] Add How to
 - [] deploy to netlify and add live link
+- [] Add Mute button

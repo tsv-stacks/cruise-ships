@@ -30,7 +30,10 @@ class Controller {
       .addEventListener("click", () => this.setSail());
   }
   bgSound = function () {
-    // function to run bg ambience at 40% volume
+    const bg = new Audio("./sounds/mixkit-close-sea-waves-loop-1195.mp3");
+    bg.loop = true;
+    bg.volume = 0.25;
+    // bg.play();
   };
   bgSea = function () {
     if (count > 1000) {
