@@ -9,22 +9,26 @@ class Controller {
     this.bgSea();
     this.bgSound();
     this.setSail = function () {
-      console.log("event listener");
-      this.setOffSound();
-      const shipElement = document.getElementById("ship");
-      ship.setSail();
-      ship.dock();
-      let portList = document.querySelectorAll(".port");
-      let portArray = Array.from(portList);
-      let nextPortIndex = 0;
-      for (let i = 0; i < portArray.length; i++) {
-        if (portArray[i].dataset.portName === ship.nextPort.name) {
-          nextPortIndex = i;
+      console.log("event listener set sail");
+      if (this.ship.remainingPort.length > 2) {
+        this.setOffSound();
+        const shipElement = document.getElementById("ship");
+        ship.setSail();
+        ship.dock();
+        let portList = document.querySelectorAll(".port");
+        let portArray = Array.from(portList);
+        let nextPortIndex = 0;
+        for (let i = 0; i < portArray.length; i++) {
+          if (portArray[i].dataset.portName === ship.nextPort.name) {
+            nextPortIndex = i;
+          }
         }
+        let nextPortElement = document.querySelector(
+          `[data-port-index="${nextPortIndex}"]`
+        );
+      } else if (this.ship.remainingPort.length <= 2) {
+        alert("End of Itinerary reached.");
       }
-      let nextPortElement = document.querySelector(
-        `[data-port-index="${nextPortIndex}"]`
-      );
     };
     document
       .getElementById("sailbutton")
