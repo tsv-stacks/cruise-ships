@@ -33,12 +33,17 @@ class Controller {
   setOffSound() {
     const shipHorn = new Audio("./sounds/shiphorn.mp3");
     const shipEngine = new Audio("./sounds/shipengine.mp3");
+    if (mute === false) {
+      shipHorn.volume = 0.5;
+      shipEngine.volume = 0.7;
+    } else {
+      shipHorn.volume = 0;
+      shipEngine.volume = 0;
+    }
     shipHorn.loop = false;
-    shipHorn.volume = 0.5;
     shipHorn.play();
     setTimeout(() => {
       shipEngine.loop = false;
-      shipEngine.volume = 0.7;
       shipEngine.play();
     }, 4000);
   }
@@ -53,7 +58,6 @@ class Controller {
       console.log("has ran for over 1000 counts (30 minutes!)");
       return;
     } else {
-      console.log("bg image changing");
       setTimeout(() => {
         bgSeaImage.style.backgroundImage = image1;
         setTimeout(() => {
