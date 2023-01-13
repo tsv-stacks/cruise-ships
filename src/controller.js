@@ -49,9 +49,18 @@ class Controller {
   }
   bgSound = function () {
     const bg = new Audio("./sounds/mixkit-close-sea-waves-loop-1195.mp3");
-    bg.loop = true;
-    bg.volume = 0.25;
-    // bg.play();
+    document.getElementById("mutebtn").addEventListener("click", function () {
+      if (mute === false) {
+        console.log("bg sound on");
+        bg.loop = true;
+        bg.volume = 0.25;
+        // bg.play();
+      } else {
+        console.log("bg sound off");
+        bg.volume = 0.0;
+        bg.loop = false;
+      }
+    });
   };
   bgSea = function () {
     if (count > 1000) {
