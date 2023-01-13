@@ -7,16 +7,31 @@ class Controller {
   constructor(ship) {
     this.ship = ship;
     this.bgSea();
+    this.bgSound();
     this.setSail = function () {
+      console.log("event listener");
+      const shipElement = document.getElementById("ship");
       ship.setSail();
       ship.dock();
-      console.log("event listener");
-      console.log(ship.nextPort);
+      let portList = document.querySelectorAll(".port");
+      let portArray = Array.from(portList);
+      let nextPortIndex = 0;
+      for (let i = 0; i < portArray.length; i++) {
+        if (portArray[i].dataset.portName === ship.nextPort.name) {
+          nextPortIndex = i;
+        }
+      }
+      let nextPortElement = document.querySelector(
+        `[data-port-index="${nextPortIndex}"]`
+      );
     };
     document
       .getElementById("sailbutton")
       .addEventListener("click", () => this.setSail());
   }
+  bgSound = function () {
+    // function to run bg ambience at 40% volume
+  };
   bgSea = function () {
     if (count > 1000) {
       console.log("has ran for over 1000 counts (30 minutes!)");
