@@ -10,6 +10,7 @@ class Controller {
     this.bgSound();
     this.setSail = function () {
       console.log("event listener");
+      this.setOffSound();
       const shipElement = document.getElementById("ship");
       ship.setSail();
       ship.dock();
@@ -28,6 +29,18 @@ class Controller {
     document
       .getElementById("sailbutton")
       .addEventListener("click", () => this.setSail());
+  }
+  setOffSound() {
+    const shipHorn = new Audio("./sounds/shiphorn.mp3");
+    const shipEngine = new Audio("./sounds/shipengine.mp3");
+    shipHorn.loop = false;
+    shipHorn.volume = 0.5;
+    shipHorn.play();
+    setTimeout(() => {
+      shipEngine.loop = false;
+      shipEngine.volume = 0.7;
+      shipEngine.play();
+    }, 4000);
   }
   bgSound = function () {
     const bg = new Audio("./sounds/mixkit-close-sea-waves-loop-1195.mp3");
