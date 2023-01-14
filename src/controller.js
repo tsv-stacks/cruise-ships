@@ -12,12 +12,10 @@ class Controller {
       console.log("event listener set sail");
       if (this.ship.remainingPort.length > 2) {
         this.setOffSound();
-        const shipElement = document.getElementById("ship");
-        ship.setSail();
-        ship.dock();
         let portList = document.querySelectorAll(".port");
         let portArray = Array.from(portList);
         let nextPortIndex = 0;
+        const shipElement = document.getElementById("ship");
         for (let i = 0; i < portArray.length; i++) {
           if (portArray[i].dataset.portName === ship.nextPort.name) {
             nextPortIndex = i;
@@ -26,8 +24,17 @@ class Controller {
         let nextPortElement = document.querySelector(
           `[data-port-index="${nextPortIndex}"]`
         );
+        const sailInterval = setInterval(() => {
+          const shipLeft = parseInt(shipElement.style.left, 10);
+          if (shipLeft === nextPortElement.offsetLeft - 32) {
+            ship.setSail();
+            ship.dock();
+            clearInterval(sailInterval);
+          }
+          shipElement.style.left = `${shipLeft + 1}px`;
+        }, 20);
       } else if (this.ship.remainingPort.length <= 2) {
-        alert("End of Itinerary reached.");
+        alert("End of the line!");
       }
     };
     document
@@ -38,7 +45,7 @@ class Controller {
     const shipHorn = new Audio("./sounds/shiphorn.mp3");
     const shipEngine = new Audio("./sounds/shipengine.mp3");
     if (mute === false) {
-      shipHorn.volume = 0.5;
+      shipHorn.volume = 0.4;
       shipEngine.volume = 0.7;
     } else {
       shipHorn.volume = 0;
@@ -49,7 +56,7 @@ class Controller {
     setTimeout(() => {
       shipEngine.loop = false;
       shipEngine.play();
-    }, 4000);
+    }, 1500);
   }
   bgSound = function () {
     const bg = new Audio("./sounds/mixkit-close-sea-waves-loop-1195.mp3");
