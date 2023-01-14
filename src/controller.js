@@ -16,7 +16,7 @@ class Controller {
         return;
       } else if (this.atSail === false) {
         if (this.ship.remainingPort.length > 1) {
-          // this.setOffSound();
+          this.setOffSound();
           this.renderMessage(
             this.ship.currentPort.name,
             this.ship.nextPort.name
@@ -38,7 +38,6 @@ class Controller {
           );
           console.log(this.ship.currentPort.name);
           console.log(this.ship.nextPort.name);
-
           // console.log(nextPortElement);
           // console.log(nextPortIndex);
           const sailInterval = setInterval(() => {
@@ -92,7 +91,7 @@ class Controller {
         console.log("bg sound on");
         bg.loop = true;
         bg.volume = 0.25;
-        // bg.play();
+        bg.play();
       } else {
         console.log("bg sound off");
         bg.volume = 0.0;
