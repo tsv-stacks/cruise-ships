@@ -17,4 +17,4 @@
 - [ ] Add How to
 - [ ] deploy to netlify and add live link
 - [x] Add Mute button
-- [ ] Add footer
+- [x] Add footer
