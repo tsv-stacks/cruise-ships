@@ -11,9 +11,10 @@
 
 ## To do
 
-- [] Add screenshot of site
-- [] Add jest installation
-- [] Add guide
-- [] Add How to
-- [] deploy to netlify and add live link
+- [ ] Add screenshot of site
+- [ ] Add jest installation
+- [ ] Add guide
+- [ ] Add How to
+- [ ] deploy to netlify and add live link
 - [x] Add Mute button
+- [ ] Add footer
