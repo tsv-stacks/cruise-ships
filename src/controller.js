@@ -2,44 +2,71 @@ const bgSeaImage = document.getElementById("viewport");
 let count = 0;
 const image0 = "url('../images/water0.png')";
 const image1 = "url('../images/water1.png')";
+const messageText = document.getElementById("message-text");
 
 class Controller {
   constructor(ship) {
     this.ship = ship;
     this.bgSea();
     this.bgSound();
+    this.atSail = false;
     this.setSail = function () {
       console.log("event listener set sail");
-      if (this.ship.remainingPort.length > 2) {
-        this.setOffSound();
-        let portList = document.querySelectorAll(".port");
-        let portArray = Array.from(portList);
-        let nextPortIndex = 0;
-        const shipElement = document.getElementById("ship");
-        for (let i = 0; i < portArray.length; i++) {
-          if (portArray[i].dataset.portName === ship.nextPort.name) {
-            nextPortIndex = i;
+      if (this.atSail === true) {
+        return;
+      } else if (this.atSail === false) {
+        if (this.ship.remainingPort.length > 1) {
+          // this.setOffSound();
+          this.renderMessage(
+            this.ship.currentPort.name,
+            this.ship.nextPort.name
+          );
+          this.atSail = true;
+          // console.log("start sail" + this.atSail);
+          let portList = document.querySelectorAll(".port");
+          let portArray = Array.from(portList);
+          console.log(portArray);
+          let nextPortIndex = 0;
+          const shipElement = document.getElementById("ship");
+          for (let i = 0; i < portArray.length; i++) {
+            if (portArray[i].dataset.portName === ship.nextPort.name) {
+              nextPortIndex = i;
+            }
           }
+          let nextPortElement = document.querySelector(
+            `[data-port-index="${nextPortIndex}"]`
+          );
+          console.log(this.ship.currentPort.name);
+          console.log(this.ship.nextPort.name);
+
+          // console.log(nextPortElement);
+          // console.log(nextPortIndex);
+          const sailInterval = setInterval(() => {
+            const shipLeft = parseInt(shipElement.style.left, 10);
+            if (shipLeft === nextPortElement.offsetLeft - 32) {
+              ship.setSail();
+              ship.dock();
+              clearInterval(sailInterval);
+              this.atSail = false;
+              messageText.textContent = `Current Destination: ${ship.currentPort.name}`;
+              // console.log("end sail" + this.atSail);
+            }
+            shipElement.style.left = `${shipLeft + 1}px`;
+          }, 20);
+        } else if (this.ship.remainingPort.length <= 1) {
+          return (messageText.textContent = "End of the line!");
         }
-        let nextPortElement = document.querySelector(
-          `[data-port-index="${nextPortIndex}"]`
-        );
-        const sailInterval = setInterval(() => {
-          const shipLeft = parseInt(shipElement.style.left, 10);
-          if (shipLeft === nextPortElement.offsetLeft - 32) {
-            ship.setSail();
-            ship.dock();
-            clearInterval(sailInterval);
-          }
-          shipElement.style.left = `${shipLeft + 1}px`;
-        }, 20);
-      } else if (this.ship.remainingPort.length <= 2) {
-        alert("End of the line!");
       }
     };
     document
       .getElementById("sailbutton")
       .addEventListener("click", () => this.setSail());
+  }
+  renderMessage(a, b) {
+    messageText.textContent = `Now Leaving: ${a}`;
+    setTimeout(() => {
+      messageText.textContent = `Next Stop: ${b}!`;
+    }, 2000);
   }
   setOffSound() {
     const shipHorn = new Audio("./sounds/shiphorn.mp3");
