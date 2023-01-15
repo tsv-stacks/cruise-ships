@@ -12,7 +12,7 @@ class Controller {
     this.atSail = false;
     this.setSail = function () {
       console.log("event listener set sail");
-      if (this.atSail === true) {
+      if (this.atSail === true || modal.style.display === "block") {
         return;
       } else if (this.atSail === false) {
         if (this.ship.remainingPort.length > 1) {

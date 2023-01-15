@@ -1,4 +1,4 @@
-let mute = false;
+let mute = true;
 let muteIcon = document.getElementById("mute-icon");
 
 document.getElementById("mutebtn").addEventListener("click", muteme);
