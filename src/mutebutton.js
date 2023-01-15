@@ -4,7 +4,6 @@ let muteIcon = document.getElementById("mute-icon");
 document.getElementById("mutebtn").addEventListener("click", muteme);
 
 function muteme() {
-  console.log("event listener");
   if (mute === false) {
     muteIcon.setAttribute(
       "d",

@@ -11,7 +11,6 @@ class Controller {
     this.bgSound();
     this.atSail = false;
     this.setSail = function () {
-      console.log("event listener set sail");
       if (this.atSail === true || modal.style.display === "block") {
         return;
       } else if (this.atSail === false) {
@@ -22,10 +21,8 @@ class Controller {
             this.ship.nextPort.name
           );
           this.atSail = true;
-          // console.log("start sail" + this.atSail);
           let portList = document.querySelectorAll(".port");
           let portArray = Array.from(portList);
-          console.log(portArray);
           let nextPortIndex = 0;
           const shipElement = document.getElementById("ship");
           for (let i = 0; i < portArray.length; i++) {
@@ -36,10 +33,6 @@ class Controller {
           let nextPortElement = document.querySelector(
             `[data-port-index="${nextPortIndex}"]`
           );
-          console.log(this.ship.currentPort.name);
-          console.log(this.ship.nextPort.name);
-          // console.log(nextPortElement);
-          // console.log(nextPortIndex);
           const sailInterval = setInterval(() => {
             const shipLeft = parseInt(shipElement.style.left, 10);
             if (shipLeft === nextPortElement.offsetLeft - 32) {
@@ -48,7 +41,6 @@ class Controller {
               clearInterval(sailInterval);
               this.atSail = false;
               messageText.textContent = `Current Destination: ${ship.currentPort.name}`;
-              // console.log("end sail" + this.atSail);
             }
             shipElement.style.left = `${shipLeft + 1}px`;
           }, 20);
@@ -88,12 +80,10 @@ class Controller {
     const bg = new Audio("./sounds/mixkit-close-sea-waves-loop-1195.mp3");
     document.getElementById("mutebtn").addEventListener("click", function () {
       if (mute === false) {
-        console.log("bg sound on");
         bg.loop = true;
         bg.volume = 0.25;
         bg.play();
       } else {
-        console.log("bg sound off");
         bg.volume = 0.0;
         bg.loop = false;
       }
