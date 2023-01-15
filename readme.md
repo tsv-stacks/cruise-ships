@@ -2,6 +2,8 @@
 
 Welcome to the second project I completed as during my time as part of Command Shift (FKA Manchester Codes). This project covered a lot of core JavaScript and ES6 principles which helped me gain a deeper understanding and ways to apply these to projects and my own code.
 
+### Live Page: https://tsv-stacks.github.io/cruise-ships/
+
 ## How it Works
 
 Don't be alarmed by the blank sea staring back at you when you first open the project!
