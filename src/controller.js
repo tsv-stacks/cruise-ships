@@ -7,8 +7,6 @@ const messageText = document.getElementById("message-text");
 class Controller {
   constructor(ship) {
     this.ship = ship;
-    this.bgSea();
-    this.bgSound();
     this.atSail = false;
     this.setSail = function () {
       if (this.atSail === true || modal.style.display === "block") {
@@ -76,34 +74,6 @@ class Controller {
       shipEngine.play();
     }, 1500);
   }
-  bgSound = function () {
-    const bg = new Audio("./sounds/mixkit-close-sea-waves-loop-1195.mp3");
-    document.getElementById("mutebtn").addEventListener("click", function () {
-      if (mute === false) {
-        bg.loop = true;
-        bg.volume = 0.25;
-        bg.play();
-      } else {
-        bg.volume = 0.0;
-        bg.loop = false;
-      }
-    });
-  };
-  bgSea = function () {
-    if (count > 1000) {
-      console.log("has ran for over 1000 counts (30 minutes!)");
-      return;
-    } else {
-      setTimeout(() => {
-        bgSeaImage.style.backgroundImage = image1;
-        setTimeout(() => {
-          bgSeaImage.style.backgroundImage = image0;
-          this.bgSea();
-        }, 1000);
-      }, 1000);
-      count++;
-    }
-  };
   renderPorts = function (ports) {
     const portsElement = document.querySelector("#ports");
     portsElement.style.width = "0";
