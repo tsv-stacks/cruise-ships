@@ -2,7 +2,7 @@
 
 Welcome to the second project I completed as during my time as part of Command Shift (FKA Manchester Codes). This project covered a lot of core JavaScript and ES6 principles which helped me gain a deeper understanding and ways to apply these to projects and my own code.
 
-### Live Page: https://tsv-stacks.github.io/cruise-ships/
+### Live Page: https://cruise-ships.netlify.app/
 
 ## How it Works
 
@@ -51,7 +51,7 @@ Add the following section to your `package.json`:
 - [x] Add jest installation
 - [x] Add guide
 - [ ] Add How to
-- [ ] deploy to netlify and add live link
+- [x] deploy to netlify and add live link
 - [x] Add Mute button
 - [x] Add footer
 - [x] Add Port Form
