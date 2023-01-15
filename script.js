@@ -16,12 +16,14 @@ class Ship {
       this.remainingPort.shift();
     }
   }
-  dock(port) {
-    // const itinerary = this.itinerary;
-    // const ppIndex = itinerary.ports.indexOf(this.previousPort);
-    // this.currentPort = itinerary.ports[ppIndex + 1];
+  dock() {
     this.currentPort = this.remainingPort[0];
     this.currentPort.addShip(this);
+  }
+  get nextPort() {
+    let itin = this.itinerary.ports;
+    let nextPortIndex = itin.indexOf(this.currentPort);
+    return itin[nextPortIndex + 1];
   }
 }
 
@@ -44,7 +46,10 @@ class Itinerary {
   }
 }
 
-// const titanic = new Ship();
-// console.log(titanic);
-
-module.exports = { Ship, Port, Itinerary };
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { Ship, Port, Itinerary };
+} else {
+  window.Port = Port;
+  window.Ship = Ship;
+  window.Itinerary = Itinerary;
+}
