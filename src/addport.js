@@ -1,4 +1,4 @@
-let modal = document.getElementById("modal-add-port");
+let modalContainer = document.getElementById("modal-add-port");
 let inputText = document.getElementById("add-port-input");
 const itinerary = { ports: [] };
 let controller = {};
@@ -6,16 +6,15 @@ let ship = {};
 
 const formControl = {
   addPortForm: () => {
-    if (modal.style.display === "block") {
-      modal.style.display = "none";
+    if (modalContainer.style.display === "block") {
+      modalContainer.style.display = "none";
     } else {
-      modal.style.display = "block";
+      modalContainer.style.display = "block";
     }
   },
-  closeForm: () => (modal.style.display = "none"),
+  closeForm: () => (modalContainer.style.display = "none"),
   testCheck: () => {
-    let portList = document.querySelectorAll(".port");
-    let portArray = Array.from(portList);
+    let portArray = Array.from(document.querySelectorAll(".port"));
     let testText = inputText.value.trim();
     if (testText === "") {
       return alert("Invalid Name!");

@@ -6,6 +6,7 @@ class Ship {
     this.remainingPort = [...itinerary.ports];
     this.currentPort.addShip(this);
   }
+
   setSail() {
     if (this.remainingPort.length < 2) {
       throw new Error("End of Itinerary reached");
@@ -16,6 +17,7 @@ class Ship {
       this.remainingPort.shift();
     }
   }
+
   dock() {
     this.currentPort = this.remainingPort[0];
     this.currentPort.addShip(this);
@@ -32,9 +34,11 @@ class Port {
     this.name = name;
     this.dockedShips = [];
   }
+
   addShip(ship) {
     this.dockedShips.push(ship);
   }
+
   removeShip(ship) {
     this.dockedShips = this.dockedShips.filter((e) => e !== ship);
   }

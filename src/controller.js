@@ -9,9 +9,9 @@ class Controller {
     this.ship = ship;
     this.atSail = false;
     this.setSail = function () {
-      if (this.atSail === true || modal.style.display === "block") {
+      if (this.atSail || modalContainer.style.display === "block") {
         return;
-      } else if (this.atSail === false) {
+      } else if (!this.atSail) {
         if (this.ship.remainingPort.length > 1) {
           this.setOffSound();
           this.renderMessage(
@@ -51,12 +51,14 @@ class Controller {
       .getElementById("sailbutton")
       .addEventListener("click", () => this.setSail());
   }
+
   renderMessage(a, b) {
     messageText.textContent = `Now Leaving: ${a}`;
     setTimeout(() => {
       messageText.textContent = `Next Stop: ${b}!`;
     }, 2000);
   }
+
   setOffSound() {
     const shipHorn = new Audio("./sounds/shiphorn.mp3");
     const shipEngine = new Audio("./sounds/shipengine.mp3");
@@ -74,6 +76,7 @@ class Controller {
       shipEngine.play();
     }, 1500);
   }
+
   renderPorts = function (ports) {
     const portsElement = document.querySelector("#ports");
     portsElement.style.width = "0";
@@ -90,6 +93,7 @@ class Controller {
       portsDiv.appendChild(div);
     });
   };
+
   renderShip = function () {
     const ship = this.ship;
     const shipElement = document.getElementById("ship");

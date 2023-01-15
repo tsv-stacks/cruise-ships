@@ -4,7 +4,7 @@ Welcome to the second project I completed as during my time as part of Command S
 
 ### Live Page: https://cruise-ships.netlify.app/
 
-## How it Works
+## Guide
 
 Don't be alarmed by the blank sea staring back at you when you first open the project!
 
@@ -50,8 +50,7 @@ Add the following section to your `package.json`:
 - [ ] Add screenshot of site
 - [x] Add jest installation
 - [x] Add guide
-- [ ] Add How to
-- [x] deploy to netlify and add live link
+- [x] Deploy to netlify and add live link
 - [x] Add Mute button
 - [x] Add footer
 - [x] Add Port Form
